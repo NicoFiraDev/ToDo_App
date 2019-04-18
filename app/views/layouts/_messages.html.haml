@@ -1,0 +1,6 @@
+- flash.each do |message_type, message_content|
+  .ui.container
+    .ui.message.transition{ :class => flash_class(message_type) }
+      %i.close.icon
+      .header
+        = message_content
