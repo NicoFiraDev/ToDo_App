@@ -1,0 +1,16 @@
+= form_for @list, html: { class: 'ui form' } do |f|
+  = f.hidden_field :user_id, value: current_user.id
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :category_id
+    .ui.selection.dropdown
+      = f.hidden_field :category_id
+      %i.dropdown.icon
+      .default.text Category
+      .menu
+        - @categories.each do |category|
+          .item{ 'data-value' => category.id }= category.name
+  .actions
+    = f.submit class: 'ui positive basic button'

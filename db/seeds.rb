@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.create(email: 'nico@email.com', password: 'password',
+            first_name: 'Nicolas', last_name: 'Firavitoba')
+categories = %w[Home Work Personal Friends Study Appointments]
+categories.each { |category| Category.create(name: category) }
+10.times { |i| List.create(name: "My list #{i + 1}", user_id: 1, category_id: rand(1..5)) }
