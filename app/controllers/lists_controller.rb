@@ -1,5 +1,6 @@
 class ListsController < ApplicationController
   before_action :list_id, only: %i[show edit update destroy]
+  before_action :categories, only: %i[new create edit]
 
   def index
     @lists = current_user.lists
@@ -9,11 +10,9 @@ class ListsController < ApplicationController
 
   def new
     @list = List.new
-    @categories = Category.all
   end
 
   def create
-    @categories = Category.all
     @list = List.new(list_params)
     if @list.save
       flash[:success] = "List #{@list.name} successfully created"
@@ -24,9 +23,7 @@ class ListsController < ApplicationController
     end
   end
 
-  def edit
-    @categories = Category.all
-  end
+  def edit; end
 
   def update
     if @list.update(list_params)
@@ -51,6 +48,10 @@ class ListsController < ApplicationController
 
   def list_id
     @list = List.find(params[:id])
+  end
+
+  def categories
+    @categories = Category.all
   end
 
   def list_params

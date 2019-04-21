@@ -1,5 +1,6 @@
 %h1= @list.name
-%p= @list.category.name
+- if @list.category
+	%p= @list.category.name
 %table
 	%thead
 		%tr

@@ -5,8 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :lists
 
-  validates :first_name, presence: true, length: { minimum: 2 }
-  validates :last_name, presence: true, length: { minimum: 2 }
+  validates_presence_of :first_name, :last_name
+  validates_length_of :first_name, minimum: 2
+  validates_length_of :last_name, minimum: 2
 
   def full_name
     "#{first_name} #{last_name}"
