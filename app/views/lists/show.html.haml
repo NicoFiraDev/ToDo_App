@@ -1,9 +1,19 @@
 %h1= @list.name
 - if @list.category
 	%p= @list.category.name
+= link_to 'New task', new_list_task_path(@list), class: 'ui teal button'
 %table
 	%thead
 		%tr
 			%th Tasks
-			%th Status
-
+			%th Completed
+			%th Urgency
+			%th{ colspan: 2 } Actions
+	%body
+	- @tasks.each do |task|
+		%tr
+			%td= task.body
+			%td= link_to task.completed ? 'Completed' : 'Pending', list_task_toggle_status_path(@list, task)
+			%td= task.urgency ? task.urgency : 'No urgency'
+			%td= link_to 'Edit', edit_list_task_path(@list, task), class: 'ui mini yellow button'
+			%td= link_to 'Delete', list_task_path(@list, task), method: :delete, class: 'ui negative mini button'

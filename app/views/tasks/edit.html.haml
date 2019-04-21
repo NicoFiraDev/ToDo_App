@@ -1,0 +1,16 @@
+%h1 Tasks#edit
+%h1 Edit Task
+= form_for @task, url: list_task_path, html: { class: 'ui form' } do |f|
+  = f.hidden_field :list_id, value: @list.id
+  .field
+    = f.label :body
+    = f.text_field :body
+  .field
+    = f.label :completed
+    = f.check_box :completed
+  .field
+    = f.label :urgency
+    = f.select :urgency, [['Low'],['Medium'],['High']], include_blank: true
+  .action
+    = f.submit 'Update task', class: 'ui positive button'
+

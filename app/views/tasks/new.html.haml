@@ -1,0 +1,11 @@
+%h1 Add Task
+= form_for @task, url: list_tasks_path(@list), html: { class: 'ui form' } do |f|
+  = f.hidden_field :list_id, value: @list.id
+  .field
+    = f.label :body
+    = f.text_field :body
+  .field
+    = f.label :urgency
+    = f.select :urgency, [['Low'],['Medium'],['High']], include_blank: true
+  .action
+    = f.submit 'Add task', class: 'ui positive button'

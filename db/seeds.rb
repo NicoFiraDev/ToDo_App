@@ -11,3 +11,4 @@ User.create(email: 'nico@email.com', password: 'password',
 categories = %w[Home Work Personal Friends Study Appointments]
 categories.each { |category| Category.create(name: category) }
 10.times { |i| List.create(name: "My list #{i + 1}", user_id: 1, category_id: rand(1..5)) }
+10.times { |i| Task.create(body: "Task for testing No. #{i}", list_id: 1) }

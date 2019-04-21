@@ -6,7 +6,10 @@ class ListsController < ApplicationController
     @lists = current_user.lists
   end
 
-  def show; end
+  def show
+    @list = List.find(params[:id])
+    @tasks = @list.tasks
+  end
 
   def new
     @list = List.new
