@@ -5,6 +5,7 @@ class ListsController < ApplicationController
   def index
     @lists = current_user.lists
     @page_title = 'Lists'
+    @my_lists = true
   end
 
   def show
