@@ -21,7 +21,7 @@ RSpec.describe ListsController do
     setup { get :index }
 
     it {
-      should route(:get, lists_path)
+      should route(:get, '/')
         .to(controller: :lists, action: :index)
     }
 

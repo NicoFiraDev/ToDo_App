@@ -34,20 +34,6 @@ RSpec.describe TasksController do
     it { should redirect_to(list_path(@list)) }
   end
 
-  describe 'Show controller and route' do
-    setup { get :show, params: { list_id: @list, id: @task } }
-
-    it {
-      should route(:get, list_task_path(@list, @task))
-        .to(controller: :tasks,
-            action: :show,
-            list_id: @list, id: @task)
-    }
-
-    it { should respond_with(200) }
-    it { should render_template('show') }
-  end
-
   describe 'New controller and route' do
     setup { get :new, params: { list_id: @list } }
 
