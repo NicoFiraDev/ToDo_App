@@ -1,2 +1,7 @@
-%h1= "Edit #{@list.name}"
-= render 'lists/form'
+.row
+	.sixteen.wide.column
+	%h1= "Edit #{@list.name}"
+.row
+	.ten.wide.column.row
+		= render 'lists/form'
+= link_to 'Back', :back, class: 'ui grey button'

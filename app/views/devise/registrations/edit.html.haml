@@ -1,8 +1,10 @@
-.ui.grid.centered
-  .eight.wide.column
-    %h2
-      Edit #{resource_name.to_s.humanize}
-    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'ui form' }) do |f|
+.row
+  .sixteen.wide.column.row
+  %h2
+    Edit #{resource_name.to_s.humanize}
+.row
+  .ten.wide.column
+    = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'ui form equal width' }) do |f|
       = render "devise/shared/error_messages", resource: resource
       .field
         = f.label :email
@@ -11,12 +13,14 @@
         %div
           Currently waiting confirmation for: #{resource.unconfirmed_email}
       .field
+      .fields
+        .field
+          = f.label :first_name
+          = f.text_field :first_name
+        .field
+          = f.label :last_name
+          = f.text_field :last_name
       .field
-        = f.label :first_name
-        = f.text_field :first_name
-      .field
-        = f.label :last_name
-        = f.text_field :last_name
         = f.label :password
         %i (leave blank if you don't want to change it)
         = f.password_field :password, autocomplete: "new-password"
@@ -35,5 +39,5 @@
         = f.submit "Update", class: 'ui positive basic button'
     %h3 Cancel my account
     %p
-      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-    = link_to "Back", :back
+      Unhappy? #{button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'ui negative button'}
+    = link_to "Back", :back, class: 'ui small grey button'

@@ -1,11 +1,11 @@
 class ListsController < ApplicationController
   before_action :list_id, only: %i[show edit update destroy]
   before_action :categories, only: %i[new create edit]
+  before_action :page_current_user
 
   def index
-    @lists = current_user.lists
+    @lists = @user.lists
     @page_title = 'Lists'
-    @my_lists = true
   end
 
   def show
@@ -53,6 +53,10 @@ class ListsController < ApplicationController
   end
 
   private
+
+  def page_current_user
+    @user = current_user
+  end
 
   def list_id
     @list = List.find(params[:id])

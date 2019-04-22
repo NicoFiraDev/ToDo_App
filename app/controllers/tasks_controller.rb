@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :task_id, only: %i[show edit update destroy]
   before_action :list_id, only: %i[new edit create update destroy toggle_status]
+  before_action :user_id
 
   def toggle_status
     @task = Task.find(params[:task_id])
@@ -49,6 +50,10 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:body, :completed, :urgency, :list_id)
+  end
+
+  def user_id
+    @user = current_user
   end
 
   def task_id

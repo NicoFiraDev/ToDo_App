@@ -1,10 +1,7 @@
-.ui.brown.inverted.menu
-  = link_to 'Home', root_path, class: "item #{@home ? 'active' : ''}"
-  = link_to 'Profile', edit_user_registration_path, class: "item #{@profile ? 'active' : ''}" 
-  = link_to 'My Lists', lists_path, class: "item #{@my_lists ? 'active' : ''}" 
+.ui.teal.inverted.menu
+  = link_to root_path, class: "item #{@lists ? 'active' : ''}" do
+    %i.home.large.icon
   .right.menu
-    .item
-      .ui.icon.input
-        %input{placeholder: "Search...", type: "text"}
-        %i.search.link.icon
+  - if current_user
+    = link_to @user.full_name, edit_user_registration_path, class: 'ui item'
     = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'ui item'

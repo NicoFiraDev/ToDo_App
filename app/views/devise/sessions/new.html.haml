@@ -1,6 +1,8 @@
-.ui.grid.centered
-  .eight.wide.column
-    %h2 Log in
+.row
+  .sixteen.wide.column.row
+  %h2 Log in
+.row
+  .ten.wide.column.row
     = form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'ui form'}) do |f|
       .field
         = f.label :email
@@ -14,4 +16,4 @@
           = f.label :remember_me
       .actions
         = f.submit "Log in", class: 'ui positive basic button'
-    = render "devise/shared/links"
+= render "devise/shared/links"
