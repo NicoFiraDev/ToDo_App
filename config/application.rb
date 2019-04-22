@@ -20,5 +20,6 @@ module ToDoApp
       g.test_framework  :rspec, fixtures: true
       g.javascript_engine :js
     end
+    config.assets.initialize_on_precompile = false
   end
 end
