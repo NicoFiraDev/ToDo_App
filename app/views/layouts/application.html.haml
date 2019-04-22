@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title ToDoApp
+    %title= @page_title ? "ToDoApp | #{@page_title}" : 'ToDoApp'
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'

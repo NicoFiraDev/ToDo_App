@@ -12,6 +12,7 @@ class TasksController < ApplicationController
 
   def new
     @task = Task.new
+    @page_title = 'New Task'
   end
 
   def create
@@ -25,7 +26,9 @@ class TasksController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @page_title = 'Edit Task'
+  end
 
   def update
     if @task.update(task_params)

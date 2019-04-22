@@ -4,11 +4,12 @@ class ListsController < ApplicationController
 
   def index
     @lists = current_user.lists
+    @page_title = 'Lists'
   end
 
   def show
-    @list = List.find(params[:id])
     @tasks = @list.tasks
+    @page_title = @list.name
   end
 
   def new
@@ -16,6 +17,7 @@ class ListsController < ApplicationController
   end
 
   def create
+    @page_title = 'Create List'
     @list = List.new(list_params)
     if @list.save
       flash[:success] = "List #{@list.name} successfully created"
@@ -26,7 +28,9 @@ class ListsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @page_title = 'Edit List'
+  end
 
   def update
     if @list.update(list_params)
